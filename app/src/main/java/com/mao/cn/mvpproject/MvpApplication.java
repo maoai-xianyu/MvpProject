@@ -5,10 +5,12 @@ import android.app.Activity;
 import com.mao.cn.mvpproject.common.CommApplication;
 import com.mao.cn.mvpproject.component.AppComponent;
 import com.mao.cn.mvpproject.component.DaggerAppComponent;
+import com.mao.cn.mvpproject.contants.ValueMaps;
 import com.mao.cn.mvpproject.domain.AnalyticsManager;
 import com.mao.cn.mvpproject.modules.AppModule;
 import com.mao.cn.mvpproject.utils.PreferenceU;
 import com.mao.cn.mvpproject.utils.StringU;
+import com.mcxiaoke.packer.helper.PackerNg;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -26,6 +28,7 @@ public class MvpApplication extends CommApplication {
     private static MvpApplication instance;
     private LinkedHashMap<String, Activity> activityMap = new LinkedHashMap<>();
     private static AppComponent component;
+    public static String appChannel = ValueMaps.AppChannel.UNKNOWN;
     @Inject
     AnalyticsManager analyticsManager;
     @Inject
@@ -44,6 +47,7 @@ public class MvpApplication extends CommApplication {
     @Override
     protected void afterOnCreate() {
         instance = this;
+        appChannel = PackerNg.getMarket(context(), "mvp");
         component = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();

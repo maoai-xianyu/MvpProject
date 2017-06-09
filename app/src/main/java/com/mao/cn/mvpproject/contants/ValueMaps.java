@@ -6,9 +6,15 @@ package com.mao.cn.mvpproject.contants;
 
 public class ValueMaps {
 
-    public static final class Time{
+    public static final class Time {
 
         public static final int BREAK_TIME_MILLISECOND = 500;
+
+    }
+
+    public static final class AppChannel {
+
+        public static final String UNKNOWN = "UNKNOWN";
 
     }
 }
