@@ -1,0 +1,19 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar" />
+    <style name="Theme.IOSchedd" parent="AppTheme">
+        <item name="android:showDividers">none</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="loading_theme" parent="Theme.IOSchedd">
+        <item name="android:windowFullscreen">true</item>
+        <!--<item name="android:windowBackground">@drawable/bg_loading</item>-->
+    </style>
+
+    <style name="AppTheme.Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+</resources>
