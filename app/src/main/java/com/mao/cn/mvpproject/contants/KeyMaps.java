@@ -5,4 +5,8 @@ package com.mao.cn.mvpproject.contants;
  */
 
 public class KeyMaps {
+
+    public static final class ServerInfoConfig {
+        public static final String SERVER_INFO_CONFIG = "server_info_config";
+    }
 }

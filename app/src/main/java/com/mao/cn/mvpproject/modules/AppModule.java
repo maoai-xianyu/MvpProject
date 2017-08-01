@@ -3,7 +3,7 @@ package com.mao.cn.mvpproject.modules;
 import android.app.Application;
 
 import com.mao.cn.mvpproject.MvpApplication;
-import com.mao.cn.mvpproject.utils.PreferenceU;
+import com.mao.cn.mvpproject.utils.tools.PreferenceU;
 
 import javax.inject.Singleton;
 

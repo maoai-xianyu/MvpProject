@@ -1,4 +1,4 @@
-package com.mao.cn.mvpproject.utils;
+package com.mao.cn.mvpproject.utils.tools;
 
 public class CharSequenceUtils {
     private static final int NOT_FOUND = -1;

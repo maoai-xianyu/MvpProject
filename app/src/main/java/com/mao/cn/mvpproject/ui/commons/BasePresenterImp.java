@@ -3,7 +3,7 @@ package com.mao.cn.mvpproject.ui.commons;
 import android.content.Context;
 
 import com.mao.cn.mvpproject.MvpApplication;
-import com.mao.cn.mvpproject.utils.PreferenceU;
+import com.mao.cn.mvpproject.utils.tools.PreferenceU;
 
 
 // +----------------------------------------------------------------------

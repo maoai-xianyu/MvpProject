@@ -30,19 +30,37 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            buildConfigField "boolean", "API_DEBUG", "true"
-            buildConfigField "boolean", "API_PRINT", "true"
+            resValue "string", "app_name", "maoai_xianyu"
+            buildConfigField "boolean", "API_DEBUG", "false"
+            buildConfigField "boolean", "API_PRINT", "false"
+            buildConfigField("boolean", "LOG_HTTP_CALLS", "false")
             signingConfig signingConfigs.config
+            buildConfigField "String", "ASSETS_URL", "\"http://assets.mao.cn/\""
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             // 是否继续混淆
             minifyEnabled false
-            buildConfigField "boolean", "API_DEBUG", "false"
-            buildConfigField "boolean", "API_PRINT", "false"
+            resValue "string", "app_name", "maoai_xianyu"
+            buildConfigField "boolean", "API_DEBUG", "true"
+            buildConfigField "boolean", "API_PRINT", "true"
             buildConfigField("boolean", "LOG_HTTP_CALLS", "true")
+            buildConfigField "String", "ASSETS_URL", "\"http://assets.mao.cn/local/\""
+
             signingConfig signingConfigs.config
             // 混淆文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        betatest {
+            zipAlignEnabled true
+            minifyEnabled true
+            resValue "string", "app_name", "maoai_xianyu"
+            buildConfigField "boolean", "API_DEBUG", "true"
+            buildConfigField "boolean", "API_PRINT", "true"
+            buildConfigField("boolean", "LOG_HTTP_CALLS", "true")
+            buildConfigField "String", "ASSETS_URL", "\"http://assets.mao.cn/local/\""
+            signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -83,4 +101,5 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
     compile 'com.squareup.okhttp3:okhttp-urlconnection:3.1.2'
     compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
+
 }

@@ -1,4 +1,4 @@
-package com.mao.cn.mvpproject.utils;
+package com.mao.cn.mvpproject.utils.tools;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

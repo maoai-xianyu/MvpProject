@@ -1,4 +1,4 @@
-package com.mao.cn.mvpproject.utils;
+package com.mao.cn.mvpproject.utils.tools;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,7 +10,7 @@ public class PreferenceU {
     private static PreferenceU instance = null;
 
     private PreferenceU(Context context) {
-        sp = context.getSharedPreferences("boxfish", 0);
+        sp = context.getSharedPreferences("mao", 0);
         editor = sp.edit();
     }
 

@@ -5,11 +5,15 @@ import android.app.Activity;
 import com.mao.cn.mvpproject.common.CommApplication;
 import com.mao.cn.mvpproject.component.AppComponent;
 import com.mao.cn.mvpproject.component.DaggerAppComponent;
+import com.mao.cn.mvpproject.contants.KeyMaps;
 import com.mao.cn.mvpproject.contants.ValueMaps;
 import com.mao.cn.mvpproject.domain.AnalyticsManager;
+import com.mao.cn.mvpproject.model.ServerInfo;
 import com.mao.cn.mvpproject.modules.AppModule;
-import com.mao.cn.mvpproject.utils.PreferenceU;
-import com.mao.cn.mvpproject.utils.StringU;
+import com.mao.cn.mvpproject.utils.config.Config;
+import com.mao.cn.mvpproject.utils.tools.GsonU;
+import com.mao.cn.mvpproject.utils.tools.PreferenceU;
+import com.mao.cn.mvpproject.utils.tools.StringU;
 import com.mcxiaoke.packer.helper.PackerNg;
 
 import java.util.ArrayList;
@@ -31,8 +35,7 @@ public class MvpApplication extends CommApplication {
     public static String appChannel = ValueMaps.AppChannel.UNKNOWN;
     @Inject
     AnalyticsManager analyticsManager;
-    @Inject
-    public PreferenceU preferenceU;
+    private static ServerInfo serverInfo;
 
     @Override
     protected void initApplication() {
@@ -53,7 +56,35 @@ public class MvpApplication extends CommApplication {
                 .build();
         getComponent().inject(this);
         analyticsManager.registerAppEnter();
+        initServerInfo();
 
+    }
+
+    public static ServerInfo serverInfo() {
+        if (serverInfo == null) {
+            initServerInfo();
+        }
+        return serverInfo;
+    }
+
+    public static void initServerInfo() {
+        serverInfo = new ServerInfo();
+        try {
+            String content = PreferenceU.getInstance(context()).getString(KeyMaps.ServerInfoConfig.SERVER_INFO_CONFIG);
+            if (StringU.isEmpty(content)) {
+                serverInfo.setServerName(Config.DEFAULT_SERVER_NAME);
+                serverInfo.setServerHost(Config.DEFAULT_SERVER_HOST);
+                serverInfo.setServerRecommendUrl(Config.DEFAULT_SERVER_APIURL_RECOMMEND);
+                PreferenceU.getInstance(context()).saveString(KeyMaps.ServerInfoConfig.SERVER_INFO_CONFIG,GsonU.string(serverInfo));
+            } else {
+                serverInfo = GsonU.convert(content, ServerInfo.class);
+            }
+        } catch (Exception e) {
+            serverInfo.setServerName(Config.DEFAULT_SERVER_NAME);
+            serverInfo.setServerHost(Config.DEFAULT_SERVER_HOST);
+            serverInfo.setServerRecommendUrl(Config.DEFAULT_SERVER_APIURL_RECOMMEND);
+        }
+        PreferenceU.getInstance(context()).saveString(KeyMaps.ServerInfoConfig.SERVER_INFO_CONFIG,GsonU.string(serverInfo));
     }
 
 
