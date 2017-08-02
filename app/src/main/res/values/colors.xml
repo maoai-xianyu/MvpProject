@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="white30">#4CFFFFFF</color>
+    <color name="white60">#99FFFFFF</color>
+    <color name="white80">#ccFFFFFF</color>
 
+    <color name="black50">#FF323232</color>
+    <color name="black80">#CC000000</color>
+    <color name="black70">#B2000000</color>
+    <color name="black90">#E5000000</color>
+    <color name="transparent85">#21000000</color>
+    <color name="transparent">#00000000</color>
     <color name="c_72000000">#72000000</color>
     <color name="c_33000000">#33000000</color>
+    <color name="c_000000">#000000</color>
+
     <color name="c_FFFFFF">#FFFFFF</color>
     <color name="c_030303">#030303</color>
     <color name="c_a9a9a9">#a9a9a9</color>
@@ -36,5 +47,7 @@
     <color name="c_69C614">#69C614</color>
     <color name="c_f7f7f7">#f7f7f7</color>
     <color name="c_fafafa">#fafafa</color>
-    <color name="c_000000">#000000</color>
+    <color name="c_f8f8f8">#f8f8f8</color>
+    <color name="c_979797">#979797</color>
+
 </resources>
