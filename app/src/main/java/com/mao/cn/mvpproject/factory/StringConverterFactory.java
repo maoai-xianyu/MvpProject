@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package com.mao.cn.mvpproject.http;
+package com.mao.cn.mvpproject.factory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;

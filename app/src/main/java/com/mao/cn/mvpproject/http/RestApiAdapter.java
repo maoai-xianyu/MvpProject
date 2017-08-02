@@ -11,6 +11,7 @@ package com.mao.cn.mvpproject.http;
 
 import com.google.gson.Gson;
 import com.mao.cn.mvpproject.MvpApplication;
+import com.mao.cn.mvpproject.factory.StringConverterFactory;
 
 import java.util.concurrent.TimeUnit;
 
