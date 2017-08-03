@@ -19,9 +19,18 @@ import rx.schedulers.Schedulers;
 
 public abstract class BaseFragment extends CommFragment implements BaseViewInterface {
 
-    protected static String clickComboType = "";
+
+    @Override
+    public void setting() {
+        setupComponent(MvpApplication.getComponent());
+    }
 
 
+    protected abstract void getArgs(Bundle bundle);
+
+    protected abstract int setView();
+
+    protected abstract void setupComponent(AppComponent appComponent);
     //用于修改 java.lang.IllegalStateException: No host 异常
     @Override
     public void onDetach() {
@@ -37,17 +46,7 @@ public abstract class BaseFragment extends CommFragment implements BaseViewInter
         }
     }
 
-    @Override
-    public void setting() {
-        setupComponent(MvpApplication.getComponent());
-    }
 
-
-    protected abstract void getArgs(Bundle bundle);
-
-    protected abstract int setView();
-
-    protected abstract void setupComponent(AppComponent appComponent);
 
     @Override
     public void interError(RetrofitError error) {

@@ -1,4 +1,4 @@
-package com.mao.cn.mvpproject.tools;
+package com.mao.cn.mvpproject.common;
 
 import com.squareup.otto.Bus;
 

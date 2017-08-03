@@ -49,5 +49,12 @@
     <color name="c_fafafa">#fafafa</color>
     <color name="c_f8f8f8">#f8f8f8</color>
     <color name="c_979797">#979797</color>
+    <color name="c_E4AF0A">#E4AF0A</color>
+
+
+    <color name="defBlack">#FF000000</color>
+    <color name="defDividerColor">#11000000</color>
+    <color name="defDialogColor">#FFE74C3C</color>
+    <color name="dialog_bg">#FFFFFFFF</color>
 
 </resources>

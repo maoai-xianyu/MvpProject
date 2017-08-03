@@ -9,8 +9,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BaseJson {
-    public BaseJson() {
+public class JsonU {
+    public JsonU() {
     }
 
     public static String getString(String resource, String key) {

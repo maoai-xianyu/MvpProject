@@ -101,4 +101,8 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp-urlconnection:3.1.2'
     compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile('com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.4.0') {
+        exclude module: 'com.android.support:recyclerview-v7'
+    }
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
 }

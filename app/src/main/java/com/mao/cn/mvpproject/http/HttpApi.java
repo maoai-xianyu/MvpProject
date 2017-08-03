@@ -9,6 +9,7 @@
 // +----------------------------------------------------------------------
 package com.mao.cn.mvpproject.http;
 
+import com.mao.cn.mvpproject.model.Movie;
 import com.mao.cn.mvpproject.model.MovieDetail;
 import com.mao.cn.mvpproject.utils.config.Config;
 
@@ -44,9 +45,9 @@ public interface HttpApi {
      *
      * @return
      */
-    @GET("v2/movie/subject/1764796")
+    @GET("v2/movie/top250")
     @Headers(Config.HEADER_MAO)
-    Call<String> ping();
+    Call<String> getMovieTop(@Query("start") int start, @Query("count") int count);
 
     /**
      * 获得我的成就
@@ -136,9 +137,9 @@ public interface HttpApi {
 
 
     //---------------RxJava
-    @GET("v2/movie/subject/1764796")
+    @GET("v2/movie/top250")
     @Headers(Config.HEADER_MAO)
-    Observable<MovieDetail> getTodayMovie(@Query("token") String token);
+    Observable<Movie> getTodayMovie(@Query("start") int start, @Query("count") int count);
 
     /**
      * @param start_line

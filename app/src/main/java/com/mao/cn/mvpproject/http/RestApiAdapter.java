@@ -46,7 +46,7 @@ public class RestApiAdapter {
         }
 
         if (rxHttpsStringInstance == null) {
-            rxHttpsStringInstance = new Builder().baseUrl("https://api.boxfish.cn")
+            rxHttpsStringInstance = new Builder().baseUrl("https://api.douban.com/")
                     .client(client)
                     .addConverterFactory(new StringConverterFactory())
                     .addConverterFactory(GsonConverterFactory.create(new Gson()))

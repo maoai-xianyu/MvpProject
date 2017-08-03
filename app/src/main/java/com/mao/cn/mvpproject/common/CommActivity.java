@@ -7,7 +7,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Window;
 
-import com.mao.cn.mvpproject.tools.OttoManager;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;

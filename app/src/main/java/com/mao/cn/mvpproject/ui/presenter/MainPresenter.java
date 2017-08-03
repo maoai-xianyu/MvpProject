@@ -16,4 +16,6 @@ import com.mao.cn.mvpproject.ui.commons.BasePresenter;
 * AUTHOR : Xabad
 */
 public interface MainPresenter extends BasePresenter{
+
+    void getMovieTop(int start,int count);
 }

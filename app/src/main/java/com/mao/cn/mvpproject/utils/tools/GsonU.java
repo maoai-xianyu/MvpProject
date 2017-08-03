@@ -21,13 +21,13 @@ public class GsonU {
 
     public static <T> T getListByKey(String resource, String key, Type type) {
         Gson gson = new Gson();
-        String value = BaseJson.getString(resource, key);
+        String value = JsonU.getString(resource, key);
         return !StringU.isEmpty(value) && !StringU.equals("[]", value.replace(" ", ""))?gson.fromJson(value, type):null;
     }
 
     public static <T> T getBeanByKey(String resource, String key, Type type) {
         Gson gson = new Gson();
-        String value = BaseJson.getString(resource, key);
+        String value = JsonU.getString(resource, key);
         return StringU.isEmpty(value)?null:gson.fromJson(value, type);
     }
 
