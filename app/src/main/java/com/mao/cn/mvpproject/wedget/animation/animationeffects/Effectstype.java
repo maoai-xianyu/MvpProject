@@ -38,10 +38,7 @@ public enum Effectstype {
     ShakeUpAndDown(ShakeY.class),
     Sidefill(SideFall.class),
     RotateH(com.mao.cn.mvpproject.wedget.animation.RotateH.class),
-    AddCoin(com.mao.cn.mvpproject.wedget.animation.AddCoin.class),
     SlideBottomForCoinNum(com.mao.cn.mvpproject.wedget.animation.SlideBottomForCoinNum.class),
-    SlideBottomForRecordResult(com.mao.cn.mvpproject.wedget.animation.SlideBottomForRecordResult.class),
-    SlideBottomForRecordResultKg(com.mao.cn.mvpproject.wedget.animation.SlideBottomForRecordResultKg.class),
     ScaleBig(com.mao.cn.mvpproject.wedget.animation.ScaleBig.class),
     ImageViewScaleXY(com.mao.cn.mvpproject.wedget.animation.ImageViewScaleXY.class);
 

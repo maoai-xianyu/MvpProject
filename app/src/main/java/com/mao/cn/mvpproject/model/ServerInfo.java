@@ -12,8 +12,8 @@ package com.mao.cn.mvpproject.model;
 import java.io.Serializable;
 
 public class ServerInfo implements Serializable {
-    private String serverName ;
-    private String serverHost ;
+    private String serverName;
+    private String serverHost;
     private String serverRecommendUrl;
 
     public String getServerName() {

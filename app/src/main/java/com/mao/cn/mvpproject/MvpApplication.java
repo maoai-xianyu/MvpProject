@@ -3,6 +3,7 @@ package com.mao.cn.mvpproject;
 import android.app.Activity;
 
 import com.mao.cn.mvpproject.common.CommApplication;
+import com.mao.cn.mvpproject.common.OttoManager;
 import com.mao.cn.mvpproject.component.AppComponent;
 import com.mao.cn.mvpproject.component.DaggerAppComponent;
 import com.mao.cn.mvpproject.contants.KeyMaps;
@@ -35,6 +36,7 @@ public class MvpApplication extends CommApplication {
     public static String appChannel = ValueMaps.AppChannel.UNKNOWN;
     @Inject
     AnalyticsManager analyticsManager;
+
     private static ServerInfo serverInfo;
 
     @Override
@@ -55,6 +57,7 @@ public class MvpApplication extends CommApplication {
                 .appModule(new AppModule(this))
                 .build();
         getComponent().inject(this);
+        OttoManager.register(this);
         analyticsManager.registerAppEnter();
         initServerInfo();
 
@@ -69,6 +72,8 @@ public class MvpApplication extends CommApplication {
 
     public static void initServerInfo() {
         serverInfo = new ServerInfo();
+        // TODO: 2017/8/3 先这个样处理，每次有版本提升的时候，同时需要添加服务或者修改服务的时候需要修改   KeyMaps.ServerInfoConfig.SERVER_INFO_CONFIG
+        PreferenceU.getInstance(context()).clear(KeyMaps.ServerInfoConfig.SERVER_INFO_CONFIG);
         try {
             String content = PreferenceU.getInstance(context()).getString(KeyMaps.ServerInfoConfig.SERVER_INFO_CONFIG);
             if (StringU.isEmpty(content)) {

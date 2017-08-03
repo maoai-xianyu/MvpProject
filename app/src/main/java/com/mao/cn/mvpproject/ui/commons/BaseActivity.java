@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.mao.cn.mvpproject.MvpApplication;
 import com.mao.cn.mvpproject.R;
@@ -53,6 +54,7 @@ public abstract class BaseActivity extends CommActivity implements BaseViewInter
     public void setting() {
         Logger.i(" activity " + getClass().getName());
         MvpApplication.addAty(activity);
+        setupComponent(MvpApplication.getComponent());
 
     }
 
@@ -100,18 +102,25 @@ public abstract class BaseActivity extends CommActivity implements BaseViewInter
 
     @Override
     public void hideLoadingDialog() {
+        if (!checkActivityState()) return;
+        runOnUiThread(() -> {
+            if (loadingDialog != null && loadingDialog.isShowing())
+                loadingDialog.dismiss();
+        });
 
     }
 
     @Override
     public void onTip(String msg) {
-
+        if (!checkActivityState()) return;
+        runOnUiThread(() -> Toast.makeText(context, msg, Toast.LENGTH_SHORT).show());
     }
 
 
     @Override
     public void onTip(int msg) {
-
+        if (!checkActivityState()) return;
+        onTip(getString(msg));
     }
 
 

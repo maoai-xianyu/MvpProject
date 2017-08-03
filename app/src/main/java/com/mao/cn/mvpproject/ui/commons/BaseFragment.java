@@ -8,7 +8,12 @@ import com.mao.cn.mvpproject.MvpApplication;
 import com.mao.cn.mvpproject.base.BaseViewInterface;
 import com.mao.cn.mvpproject.common.CommFragment;
 import com.mao.cn.mvpproject.component.AppComponent;
+import com.mao.cn.mvpproject.contants.ValueMaps;
 import com.mao.cn.mvpproject.converter.RetrofitError;
+import com.mao.cn.mvpproject.utils.tools.JsonU;
+import com.mao.cn.mvpproject.utils.tools.StringU;
+import com.mao.cn.mvpproject.wedget.dialog.LoadingDialog;
+import com.orhanobut.logger.Logger;
 
 import java.lang.reflect.Field;
 
@@ -20,8 +25,11 @@ import rx.schedulers.Schedulers;
 public abstract class BaseFragment extends CommFragment implements BaseViewInterface {
 
 
+    protected LoadingDialog loadingDialog;
+
     @Override
     public void setting() {
+        Logger.d("当前的fragment", getClass().getName());
         setupComponent(MvpApplication.getComponent());
     }
 
@@ -31,6 +39,7 @@ public abstract class BaseFragment extends CommFragment implements BaseViewInter
     protected abstract int setView();
 
     protected abstract void setupComponent(AppComponent appComponent);
+
     //用于修改 java.lang.IllegalStateException: No host 异常
     @Override
     public void onDetach() {
@@ -47,12 +56,35 @@ public abstract class BaseFragment extends CommFragment implements BaseViewInter
     }
 
 
-
     @Override
     public void interError(RetrofitError error) {
         int status = error.getCode();
         if (status == RetrofitError.ERROR_CONNECTION) {
             return;
+        }
+        switch (error.getCode()) {
+            case ValueMaps.ResponeCode.TYPE_CODE_401:
+                String content = JsonU.getString(error.getBody(), "error");
+                if (activity instanceof BaseActivity) {
+                    if (StringU.isEmpty(content)) {
+                        ((BaseActivity) activity).accessError(error.getRequestUrl());
+                    } else {
+                        ((BaseActivity) activity).accessError(content, error.getRequestUrl());
+                    }
+                }
+                break;
+            case ValueMaps.ResponeCode.TYPE_CODE_404:
+                break;
+            case ValueMaps.ResponeCode.TYPE_CODE_500:
+                break;
+            case ValueMaps.ResponeCode.TYPE_CODE_501:
+                break;
+            case ValueMaps.ResponeCode.TYPE_CODE_502:
+                break;
+            case ValueMaps.ResponeCode.TYPE_CODE_503:
+                break;
+            default:
+                break;
         }
     }
 
@@ -60,35 +92,44 @@ public abstract class BaseFragment extends CommFragment implements BaseViewInter
     public void interError(Throwable throwable) {
         if (throwable instanceof HttpException) {
             HttpException httpException = (HttpException) throwable;
+            if (httpException.code() == ValueMaps.ResponeCode.TYPE_CODE_401) {
+                ((BaseActivity) activity).accessError("");
+            }
         }
     }
 
     @Override
     public void showLoadingDialog(final String str) {
         if (!checkActivityState()) return;
+        activity.runOnUiThread(() -> {
+            if (loadingDialog == null) {
+                loadingDialog = new LoadingDialog(activity);
+            }
+            loadingDialog.show(str);
+        });
     }
 
     @Override
     public void showLoadingDialog(int i) {
+        if (!checkActivityState()) return;
+        showLoadingDialog(getString(i));
 
     }
 
     @Override
     public void hideLoadingDialog() {
         if (!checkActivityState()) return;
+        activity.runOnUiThread(() -> {
+            if (loadingDialog != null && loadingDialog.isShowing()) {
+                loadingDialog.dismiss();
+            }
+        });
     }
 
     @Override
     public void onTip(final String tipInfo) {
         if (!checkActivityState()) return;
-        if (activity != null) {
-            activity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(context, tipInfo, Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+        activity.runOnUiThread(() -> Toast.makeText(context, tipInfo, Toast.LENGTH_SHORT).show());
     }
 
     @Override

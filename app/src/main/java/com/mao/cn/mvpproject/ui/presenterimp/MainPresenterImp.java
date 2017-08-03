@@ -9,23 +9,30 @@
 // +----------------------------------------------------------------------
 package com.mao.cn.mvpproject.ui.presenterimp;
 
+import com.google.gson.JsonSyntaxException;
 import com.mao.cn.mvpproject.R;
 import com.mao.cn.mvpproject.callBack.StringCallback;
 import com.mao.cn.mvpproject.converter.RetrofitError;
 import com.mao.cn.mvpproject.interactors.MainInteractor;
+import com.mao.cn.mvpproject.model.Movie;
 import com.mao.cn.mvpproject.ui.commons.BasePresenterImp;
 import com.mao.cn.mvpproject.ui.features.IMain;
 import com.mao.cn.mvpproject.ui.presenter.MainPresenter;
 import com.mao.cn.mvpproject.utils.network.NetworkUtils;
+import com.mao.cn.mvpproject.utils.tools.GsonU;
+import com.mao.cn.mvpproject.utils.tools.ListU;
+import com.mao.cn.mvpproject.utils.tools.StringU;
+import com.orhanobut.logger.Logger;
 
 /**
-* DESC   :
-* AUTHOR : Xabad
-*/
+ * DESC   :
+ * AUTHOR : Xabad
+ */
 public class MainPresenterImp extends BasePresenterImp implements MainPresenter {
     MainInteractor interactor;
     IMain viewInterface;
-    public MainPresenterImp(IMain viewInterface,MainInteractor mainInteractor) {
+
+    public MainPresenterImp(IMain viewInterface, MainInteractor mainInteractor) {
         super();
         this.viewInterface = viewInterface;
         this.interactor = mainInteractor;
@@ -34,21 +41,34 @@ public class MainPresenterImp extends BasePresenterImp implements MainPresenter 
 
     @Override
     public void getMovieTop(int start, int count) {
-
-        if (!NetworkUtils.isConnected(context)){
+        if (!NetworkUtils.isConnected(context)) {
             viewInterface.onTip(context.getString(R.string.no_connect_net));
             return;
         }
+        viewInterface.showLoadingDialog("");
         interactor.getMovieTop(start, count, new StringCallback() {
             @Override
-            public void success(String var1) {
-
+            public void success(String response) {
+                viewInterface.hideLoadingDialog();
+                Logger.i(response);
+                Movie convert = null;
+                try {
+                    convert = GsonU.convert(response, Movie.class);
+                } catch (JsonSyntaxException e) {
+                    e.printStackTrace();
+                }
+                if (convert != null && StringU.isNotEmpty(convert.getTitle()) && ListU.notEmpty(convert.getSubjects())) {
+                    viewInterface.showTopMovie(convert.getSubjects(), convert.getTitle());
+                } else {
+                    viewInterface.showTopMovie(null, "");
+                }
             }
 
             @Override
             public void failure(RetrofitError var1) {
-
+                viewInterface.hideLoadingDialog();
                 viewInterface.interError(var1);
+                viewInterface.showTopMovie(null, "");
             }
         });
 

@@ -5,6 +5,7 @@
 
 package com.mao.cn.mvpproject.factory;
 
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
@@ -22,7 +23,7 @@ public class StringConverterFactory extends Factory {
     }
 
     public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
-        return String.class.equals(type)? (Converter) value -> value :null;
+        return String.class.equals(type) ? (Converter) value -> ((ResponseBody) value).string() : null;
     }
 
     public Converter<?, String> stringConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
@@ -30,6 +31,6 @@ public class StringConverterFactory extends Factory {
     }
 
     public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
-        return String.class.equals(type)? (Converter) value -> RequestBody.create(StringConverterFactory.MEDIA_TYPE, (byte[]) value) :null;
+        return String.class.equals(type) ? (Converter) value -> RequestBody.create(StringConverterFactory.MEDIA_TYPE, (String) value) : null;
     }
 }
