@@ -1,25 +1,23 @@
 // +----------------------------------------------------------------------
 // | Project:   MvpProject
 // +----------------------------------------------------------------------
-// | CreateTime: 06/09/2017 11:17 上午
+// | CreateTime: 08/04/2017 16:53 下午
 // +----------------------------------------------------------------------
 // | Author:     xab(xab@xabad.cn)
 // +----------------------------------------------------------------------
 // | Description:
 // +----------------------------------------------------------------------
-package com.mao.cn.mvpproject.ui.features;
+package com.mao.cn.mvpproject.interactors;
 
-import com.mao.cn.mvpproject.ui.commons.BaseViewInferface;
-import com.mao.cn.mvpproject.model.MovieDetail;
-
-import java.util.List;
-
+import javax.inject.Inject;
 /**
 * DESC   :
 * AUTHOR : Xabad
 */
-public interface IMain extends BaseViewInferface {
+public class OkhttpShowContentInteractor {
 
-    void showTopMovie(List<MovieDetail> movieDetails,String platformTitle);
+    @Inject
+    public OkhttpShowContentInteractor(){
 
+    }
 }

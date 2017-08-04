@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
 import com.mao.cn.mvpproject.MvpApplication;
-import com.mao.cn.mvpproject.base.BaseViewInterface;
 import com.mao.cn.mvpproject.common.CommFragment;
 import com.mao.cn.mvpproject.component.AppComponent;
 import com.mao.cn.mvpproject.contants.ValueMaps;
@@ -22,7 +21,7 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public abstract class BaseFragment extends CommFragment implements BaseViewInterface {
+public abstract class BaseFragment extends CommFragment implements BaseViewInferface {
 
 
     protected LoadingDialog loadingDialog;

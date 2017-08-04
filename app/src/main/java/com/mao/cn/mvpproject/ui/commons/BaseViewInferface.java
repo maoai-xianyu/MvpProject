@@ -1,4 +1,4 @@
-package com.mao.cn.mvpproject.base;
+package com.mao.cn.mvpproject.ui.commons;
 
 import com.mao.cn.mvpproject.common.CommViewInterface;
 import com.mao.cn.mvpproject.converter.RetrofitError;
@@ -7,7 +7,7 @@ import com.mao.cn.mvpproject.converter.RetrofitError;
  * Created by zhangkun on 2017/6/9.
  */
 
-public interface BaseViewInterface extends CommViewInterface {
+public interface BaseViewInferface extends CommViewInterface {
 
 
     void interError(RetrofitError error);

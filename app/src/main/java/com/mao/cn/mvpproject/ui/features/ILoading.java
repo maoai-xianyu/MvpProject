@@ -9,11 +9,11 @@
 // +----------------------------------------------------------------------
 package com.mao.cn.mvpproject.ui.features;
 
-import com.mao.cn.mvpproject.base.BaseViewInterface;
+import com.mao.cn.mvpproject.ui.commons.BaseViewInferface;
 
 /**
 * DESC   :
 * AUTHOR : Xabad
 */
-public interface ILoading extends BaseViewInterface {
+public interface ILoading extends BaseViewInferface {
 }

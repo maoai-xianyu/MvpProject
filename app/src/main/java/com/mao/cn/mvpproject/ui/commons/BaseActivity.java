@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import com.mao.cn.mvpproject.MvpApplication;
 import com.mao.cn.mvpproject.R;
-import com.mao.cn.mvpproject.base.BaseViewInterface;
 import com.mao.cn.mvpproject.common.CommActivity;
 import com.mao.cn.mvpproject.component.AppComponent;
 import com.mao.cn.mvpproject.contants.ValueMaps;
@@ -28,7 +27,7 @@ import retrofit2.adapter.rxjava.HttpException;
  * Created by zhangkun on 2017/6/9.
  */
 
-public abstract class BaseActivity extends CommActivity implements BaseViewInterface {
+public abstract class BaseActivity extends CommActivity implements BaseViewInferface {
 
 
     protected DefineTwoBottomDialog twoBottomDialog;

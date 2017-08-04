@@ -1,7 +1,7 @@
 // +----------------------------------------------------------------------
 // | Project:   MvpProject
 // +----------------------------------------------------------------------
-// | CreateTime: 06/09/2017 11:17 上午
+// | CreateTime: 08/04/2017 16:53 下午
 // +----------------------------------------------------------------------
 // | Author:     xab(xab@xabad.cn)
 // +----------------------------------------------------------------------
@@ -9,8 +9,8 @@
 // +----------------------------------------------------------------------
 package com.mao.cn.mvpproject.ui.features;
 
-import com.mao.cn.mvpproject.ui.commons.BaseViewInferface;
 import com.mao.cn.mvpproject.model.MovieDetail;
+import com.mao.cn.mvpproject.ui.commons.BaseViewInferface;
 
 import java.util.List;
 
@@ -18,8 +18,6 @@ import java.util.List;
 * DESC   :
 * AUTHOR : Xabad
 */
-public interface IMain extends BaseViewInferface {
-
-    void showTopMovie(List<MovieDetail> movieDetails,String platformTitle);
-
+public interface IRxjavaShowContent extends BaseViewInferface{
+    void showTopMovie(List<MovieDetail> movieDetails, String title);
 }

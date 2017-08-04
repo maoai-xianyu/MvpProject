@@ -50,14 +50,25 @@ public interface HttpApi {
     Call<String> getMovieTop(@Query("start") int start, @Query("count") int count);
 
     /**
+     * @param start
+     * @param count
+     * @return
+     */
+    @GET("v2/movie/top250")
+    @Headers(Config.HEADER_MAO)
+    Call<Movie> getMovieTopNew(@Query("start") int start, @Query("count") int count);
+
+    /**
      * 获得我的成就
      *
      * @param token 如果需要校验那么用token
      */
-    @GET("v2/movie/subject/1764796")
+    @GET("v2/movie/top250")
     @Headers(Config.HEADER_MAO)
     Call<MovieDetail> getMovieList(@Query("token") String token);
 
+
+    //----------------------------------------------------------------------------------------------
 
     //---------------------POST请求
 
@@ -114,9 +125,7 @@ public interface HttpApi {
     Call<String> sendArticleData(@Header("Request-ID") String uuid, @Body RequestBody typedJson, @Query("access_token") String access_token);
 
     /**
-     * 存储课程名,当天失效
-     *
-     * @param key          课程id
+     * @param key
      * @param access_token
      * @return
      */
@@ -126,8 +135,8 @@ public interface HttpApi {
     Call<String> storeCourseIdForToday(@Field("key") String key, @Query("access_token") String access_token);
 
     /**
-     * 判断是否有抽奖资格
      * VERSION  是用于判断版本的
+     *
      * @param token
      * @return
      */
@@ -135,32 +144,31 @@ public interface HttpApi {
     @Headers({Config.HEADER_MAO, Config.VERSION})
     Call<String> checkAwardState(@Query("access_token") String token);
 
+    //----------------------------------------------------------------------------------------------
 
     //---------------RxJava
     @GET("v2/movie/top250")
     @Headers(Config.HEADER_MAO)
-    Observable<Movie> getTodayMovie(@Query("start") int start, @Query("count") int count);
+    Observable<String> getTodayMovie(@Query("start") int start, @Query("count") int count);
 
     /**
-     * @param start_line
-     * @param semester
+     * @param start
+     * @param count
+     * @return
+     */
+    @GET("v2/movie/top250")
+    @Headers(Config.HEADER_MAO)
+    Observable<Movie> getTodayMovieTop(@Query("start") int start, @Query("count") int count);
+
+    /**
+     * @param start
+     * @param count
      * @param access_token
      * @return
      */
     @GET("v2/movie/subject/1764796")
     @Headers(Config.HEADER_MAO)
-    Observable<String> getTodayMovieTop(@Query("start_line") String start_line, @Query("semester") String semester, @Query("access_token") String access_token);
-
-
-    /**
-     * @param start_line
-     * @param semester
-     * @param access_token
-     * @return
-     */
-    @GET("v2/movie/subject/1764796")
-    @Headers(Config.HEADER_MAO)
-    Observable<String> getTodayMovie(@Query("start_line") String start_line, @Query("semester") String semester, @Query("access_token") String access_token);
+    Observable<String> getTodayMovie(@Query("start") int start, @Query("count") int count, @Query("access_token") String access_token);
 
 
 }
