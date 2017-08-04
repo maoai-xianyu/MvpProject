@@ -32,4 +32,7 @@ public class ValueMaps {
         public static final int TYPE_CODE_200 = 200;
     }
 
+    public static final class ClickTime{
+        public static final int BREAK_TIME_MILLISECOND = 500;
+    }
 }
