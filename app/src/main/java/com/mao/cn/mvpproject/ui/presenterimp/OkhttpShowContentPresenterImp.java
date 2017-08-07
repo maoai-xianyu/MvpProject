@@ -55,7 +55,10 @@ public class OkhttpShowContentPresenterImp extends BasePresenterImp implements O
         }
         viewInterface.showLoadingDialog("");
         OKHttpClientFactory clientFactory = OKHttpClientFactory.getInStance();
-        clientFactory.get(MvpApplication.serverInfo().getServerHost() + "v2/movie/top250", new Callback() {
+        Map<String, String> params = new HashMap<>();
+        params.put("start", start + "");
+        params.put("count", count + "");
+        clientFactory.requestGetBySyn("v2/movie/top250", params, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 viewInterface.hideLoadingDialog();

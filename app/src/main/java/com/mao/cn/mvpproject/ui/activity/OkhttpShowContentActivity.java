@@ -68,7 +68,8 @@ public class OkhttpShowContentActivity extends BaseActivity implements IOkhttpSh
     @Override
     public void initView() {
         movieTopAdapter = new MovieTopAdapter(this);
-        presenter.getMovieTopMyOkHttp(0, 10);
+//        presenter.getMovieTopMyOkHttp(0, 10);
+        presenter.getMovieTop(0, 10);
 
     }
 

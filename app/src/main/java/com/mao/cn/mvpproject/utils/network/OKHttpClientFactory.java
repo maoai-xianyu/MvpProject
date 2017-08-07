@@ -2,6 +2,11 @@ package com.mao.cn.mvpproject.utils.network;
 
 import android.net.Uri;
 
+import com.mao.cn.mvpproject.MvpApplication;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.CacheControl;
@@ -51,6 +56,37 @@ public class OKHttpClientFactory {
         Request request = new Request.Builder().url(url).get().build();
         new OkHttpClient().newCall(request).enqueue(callback);
     }
+
+
+    /**
+     * okHttp get同步请求
+     *
+     * @param actionUrl 接口地址
+     * @param paramsMap 请求参数
+     */
+    public void requestGetBySyn(String actionUrl, Map<String, String> paramsMap, Callback callback) {
+        StringBuilder tempParams = new StringBuilder();
+        //处理参数
+        int pos = 0;
+        for (String key : paramsMap.keySet()) {
+            if (pos > 0) {
+                tempParams.append("&");
+            }
+            //对参数进行URLEncoder
+            try {
+                tempParams.append(String.format("%s=%s", key, URLEncoder.encode(paramsMap.get(key), "utf-8")));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            pos++;
+        }
+        //补全请求地址
+        String requestUrl = String.format("%s/%s?%s", MvpApplication.serverInfo().getServerHost(), actionUrl, tempParams.toString());
+        //创建一个请求
+        Request request = new Request.Builder().url(requestUrl).get().build();
+        new OkHttpClient().newCall(request).enqueue(callback);
+    }
+
 
     public Response download(Uri uri) throws Exception {
         CacheControl cacheControl = CacheControl.FORCE_NETWORK;
