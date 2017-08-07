@@ -10,11 +10,16 @@
 package com.mao.cn.mvpproject.ui.features;
 
 
+import com.mao.cn.mvpproject.model.MovieDetail;
 import com.mao.cn.mvpproject.ui.commons.BaseViewInferface;
+
+import java.util.List;
 
 /**
 * DESC   :
 * AUTHOR : Xabad
 */
 public interface IOkhttpShowContent extends BaseViewInferface {
+    void showTopMovie(List<MovieDetail> subjects, String title);
+
 }
