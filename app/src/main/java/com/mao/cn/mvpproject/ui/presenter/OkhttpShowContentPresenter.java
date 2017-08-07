@@ -15,4 +15,5 @@ package com.mao.cn.mvpproject.ui.presenter;
 */
 public interface OkhttpShowContentPresenter{
     void getMovieTop(int start,int count);
+    void getMovieTopMyOkHttp(int start,int count);
 }

@@ -81,10 +81,13 @@
 -keep class okhttp3.** { *; }
 -keep interface okhttp3.** { *; }
 
+#okio
+-dontwarn okio.**
+-keep class okio.**{*;}
+
 #retrofit
 -dontwarn rx.**
 -dontwarn retrofit2.**
--dontwarn okio.**
 -keep class retrofit2.** { *; }
 -keepclasseswithmembers class * {
     @retrofit2.http.* <methods>;
@@ -101,3 +104,7 @@
 
 #javax.annotation
 -dontwarn javax.annotation.**
+
+#myokhttp
+-dontwarn com.tsy.sdk.myokhttp.**
+-keep class com.tsy.sdk.myokhttp.**{*;}

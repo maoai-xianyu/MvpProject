@@ -42,7 +42,8 @@ public class OKHttpClientFactory {
     private static OkHttpClient defaultOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(1000 * 30, TimeUnit.MILLISECONDS)
-                .readTimeout(1000 * 15, TimeUnit.MILLISECONDS);
+                .readTimeout(1000 * 15, TimeUnit.MILLISECONDS)
+                .writeTimeout(1000 * 30, TimeUnit.MILLISECONDS);
         return builder.build();
     }
 
