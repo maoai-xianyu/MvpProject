@@ -24,6 +24,7 @@ import rx.schedulers.Schedulers;
 public abstract class BaseFragment extends CommFragment implements BaseViewInferface {
 
 
+
     protected LoadingDialog loadingDialog;
 
     @Override
