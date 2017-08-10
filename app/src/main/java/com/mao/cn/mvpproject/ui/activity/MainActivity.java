@@ -29,7 +29,7 @@ import com.mao.cn.mvpproject.ui.commons.BaseActivity;
 import com.mao.cn.mvpproject.ui.features.IMain;
 import com.mao.cn.mvpproject.ui.presenter.MainPresenter;
 import com.mao.cn.mvpproject.utils.tools.ListU;
-import com.orhanobut.logger.Logger;
+import com.mao.cn.mvpproject.utils.tools.LogU;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -83,7 +83,7 @@ public class MainActivity extends BaseActivity implements IMain {
                 .MILLISECONDS).subscribe(aVoid -> {
             finish();
         }, throwable -> {
-            Logger.e(throwable.getMessage());
+            LogU.e(throwable.getMessage());
         });
 
 
@@ -91,7 +91,7 @@ public class MainActivity extends BaseActivity implements IMain {
                 .MILLISECONDS).subscribe(aVoid -> {
             startActivity(OkhttpShowContentActivity.class);
         }, throwable -> {
-            Logger.e(throwable.getMessage());
+            LogU.e(throwable.getMessage());
         });
 
 
@@ -101,7 +101,7 @@ public class MainActivity extends BaseActivity implements IMain {
             startActivity(RxjavaShowContentActivity.class);
 
         }, throwable -> {
-            Logger.e(throwable.getMessage());
+            LogU.e(throwable.getMessage());
         });
     }
 

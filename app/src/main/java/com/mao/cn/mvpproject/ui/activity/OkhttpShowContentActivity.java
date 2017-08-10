@@ -28,7 +28,7 @@ import com.mao.cn.mvpproject.ui.commons.BaseActivity;
 import com.mao.cn.mvpproject.ui.features.IOkhttpShowContent;
 import com.mao.cn.mvpproject.ui.presenter.OkhttpShowContentPresenter;
 import com.mao.cn.mvpproject.utils.tools.ListU;
-import com.orhanobut.logger.Logger;
+import com.mao.cn.mvpproject.utils.tools.LogU;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -79,7 +79,7 @@ public class OkhttpShowContentActivity extends BaseActivity implements IOkhttpSh
                 .MILLISECONDS).subscribe(aVoid -> {
             finish();
         }, throwable -> {
-            Logger.e(throwable.getMessage());
+            LogU.e(throwable.getMessage());
         });
 
     }

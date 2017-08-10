@@ -21,8 +21,8 @@ import com.mao.cn.mvpproject.ui.presenter.MainPresenter;
 import com.mao.cn.mvpproject.utils.network.NetworkUtils;
 import com.mao.cn.mvpproject.utils.tools.GsonU;
 import com.mao.cn.mvpproject.utils.tools.ListU;
+import com.mao.cn.mvpproject.utils.tools.LogU;
 import com.mao.cn.mvpproject.utils.tools.StringU;
-import com.orhanobut.logger.Logger;
 
 /**
  * DESC   :
@@ -50,7 +50,7 @@ public class MainPresenterImp extends BasePresenterImp implements MainPresenter 
             @Override
             public void success(String response) {
                 viewInterface.hideLoadingDialog();
-                Logger.i(response);
+                LogU.i(response);
                 Movie convert = null;
                 try {
                     convert = GsonU.convert(response, Movie.class);

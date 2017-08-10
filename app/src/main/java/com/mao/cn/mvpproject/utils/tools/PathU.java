@@ -9,7 +9,10 @@ public class PathU {
     private static PathU instance = null;
     private File assetsFile;
     private File testVideoPath;
+    private File files;
+    private File blurPath;
     private static String filePath;
+    private File resourcePath;
 
     public File getTestVideoPath() {
         return testVideoPath;
@@ -37,13 +40,10 @@ public class PathU {
         return files.getPath();
     }
 
-    private File files;
-
     public File getBlurPath() {
         return blurPath;
     }
 
-    private File blurPath;
 
     public File getResourceFile() {
         return resourcePath;
@@ -52,8 +52,6 @@ public class PathU {
     public String getResourcePath() {
         return resourcePath.getPath();
     }
-
-    private File resourcePath;
 
 
     private PathU() {
@@ -70,7 +68,7 @@ public class PathU {
         files = PathUtils.getInstance().generatePath("", "files", MvpApplication.context());
         blurPath = PathUtils.getInstance().generatePath("", "blur", MvpApplication.context());
         resourcePath = PathUtils.getInstance().generatePath("", "resource", MvpApplication.context());
-        assetsFile = PathUtils.getInstance().generatePath("", "files/staticres", MvpApplication.context());
+        assetsFile = PathUtils.getInstance().generatePath("", "files/files", MvpApplication.context());
     }
 
     public File getAssetsFile() {

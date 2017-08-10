@@ -25,7 +25,7 @@ import com.mao.cn.mvpproject.modules.LoadingModule;
 import com.mao.cn.mvpproject.ui.commons.BaseActivity;
 import com.mao.cn.mvpproject.ui.features.ILoading;
 import com.mao.cn.mvpproject.ui.presenter.LoadingPresenter;
-import com.orhanobut.logger.Logger;
+import com.mao.cn.mvpproject.utils.tools.LogU;
 
 import java.util.concurrent.TimeUnit;
 
@@ -69,11 +69,11 @@ public class LoadingActivity extends BaseActivity implements ILoading {
     @Override
     public void initView() {
 
-        Logger.e("  SS  "+tvShow);
+        LogU.e("  SS  "+tvShow);
 
 //        tvShow = (TextView) findViewById(R.id.tv_show);
 
-        Logger.e("  SS  "+tvShow);
+        LogU.e("  SS  "+tvShow);
 
         //当应用是使用系统安装器安装并且运行的时候，category中是没有任何信息的，这个时候会导致按home键后，点击图标重启app。
         /*if (!isTaskRoot()) {
@@ -94,7 +94,7 @@ public class LoadingActivity extends BaseActivity implements ILoading {
                 .subscribe(aVoid -> {
                     startActivity(MainActivity.class, true);
                 }, throwable -> {
-                    Logger.e(throwable.toString());
+                    LogU.e(throwable.toString());
                 });
 
     }
