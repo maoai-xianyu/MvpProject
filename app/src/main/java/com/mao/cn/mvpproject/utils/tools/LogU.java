@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.mao.cn.mvpproject.BuildConfig;
 
-
 public class LogU {
 
     private static String className;//类名
